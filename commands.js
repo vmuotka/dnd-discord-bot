@@ -1,11 +1,13 @@
 const spell = require('./commands/spell')
 const spellsearch = require('./commands/spellsearch')
 const roll = require('./commands/roll')
+const help = require('./commands/help')
 
 const commands = {
   spell,
   spellsearch,
-  roll
+  roll,
+  help
 }
 const prefix = '§'
 
@@ -20,7 +22,7 @@ module.exports = async (msg) => {
     command = command.substring(1)
     commands[command] ?
       commands[command](msg, tokens)
-      : msg.channel.send('That command is not available')
+      : msg.channel.send('That command is not available. Type ´help´ for available commands.')
   }
 
   // bots need love too
