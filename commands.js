@@ -1,13 +1,18 @@
 const spell = require('./commands/spell')
 const spellsearch = require('./commands/spellsearch')
+const roll = require('./commands/roll')
 
 const commands = {
   spell,
-  spellsearch
+  spellsearch,
+  roll
 }
 const prefix = '§'
 
 module.exports = async (msg) => {
+  if (msg.author.bot)
+    return
+
   let tokens = msg.content.split(' ')
   let command = tokens.shift()
 
@@ -19,6 +24,6 @@ module.exports = async (msg) => {
   }
 
   // bots need love too
-  if (msg.content === 'love u')
+  if (msg.content.includes('love u'))
     msg.reply('love u too <3')
 }

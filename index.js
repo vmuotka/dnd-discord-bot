@@ -10,6 +10,9 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTop
 client.login(process.env.DISCORD)
 
 client.on('ready', () => {
+  client.user.setActivity(
+    'Dungeons & Dragons',
+  )
   console.log(`Logged in as ${client.user.tag}`)
   // console.log(client)
 })

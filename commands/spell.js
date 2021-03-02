@@ -34,7 +34,7 @@ module.exports = async (msg, args) => {
     }
 
   } else {
-    msg.channel.send('Usage: `§spell <spellname>`')
+    msg.channel.send('Usage: `spell <spellname>`')
   }
 
 }
