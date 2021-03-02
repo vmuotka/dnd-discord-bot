@@ -23,16 +23,18 @@ const join = (msg, args) => {
 }
 
 const character = (msg, args) => {
-  if (args[1]) {
+  args.shift()
+  const character = args.join(' ')
+  if (character) {
     let user = users.find(u => u.id === msg.author.id)
     if (!user) {
       msg.reply('please join a room first.')
       return
     }
 
-    user.character = args[1]
+    user.character = character
     users = users.map(u => u.id !== msg.author.id ? u : user)
-    msg.reply(`You changed your character to ${args[1]}`)
+    msg.reply(`You changed your character to ${character}`)
   } else {
     msg.channel.send('Usage: `initiative character <charactername>`, set your character. The character must match the name that your DM uses in their INITracker.')
   }
@@ -40,22 +42,23 @@ const character = (msg, args) => {
 
 const updateInitiative = async (msg, args) => {
   const user = users.find(u => u.id === msg.author.id)
-  if (!user.roomname || !user.character) {
+  if (!user.roomname || !user.character || !user) {
     msg.reply('please join a room and set your characters name before updating initiative.')
     return
   }
   try {
-    await axios.get(`http://vmuotka-ketunkolo.herokuapp.com/api/initracker/initiative`, {
-      params: {
-        roomname: user.roomname,
-        character: user.character,
-        initiative: args[0]
-      }
-    })
+    await axios.get(
+      `http://vmuotka-ketunkolo.herokuapp.com/api/initracker/initiative`,
+      {
+        params: {
+          roomname: user.roomname,
+          character: user.character,
+          initiative: args[0]
+        }
+      })
   } catch (err) {
     console.error(err)
   }
-
 }
 
 const check = (msg, args) => {
@@ -69,7 +72,8 @@ const check = (msg, args) => {
 const commands = {
   join,
   character,
-  check
+  check,
+  test: () => { console.log(users) }
 }
 
 module.exports = async (msg, args) => {

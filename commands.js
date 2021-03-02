@@ -13,8 +13,9 @@ const commands = {
   help,
   feat,
   feats,
+  init: initiative,
   initiative,
-  prefix: (msg, args) => { prefix === args[0] }
+  prefix: (msg, args) => { prefix === args[0] },
 }
 let prefix = '§'
 
