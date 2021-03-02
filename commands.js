@@ -4,6 +4,7 @@ const roll = require('./commands/roll')
 const help = require('./commands/help')
 const feat = require('./commands/feat')
 const feats = require('./commands/feats')
+const initiative = require('./commands/initiative')
 
 const commands = {
   spell,
@@ -11,9 +12,11 @@ const commands = {
   roll,
   help,
   feat,
-  feats
+  feats,
+  initiative,
+  prefix: (msg, args) => { prefix === args[0] }
 }
-const prefix = '§'
+let prefix = '§'
 
 module.exports = async (msg) => {
   if (msg.author.bot)
