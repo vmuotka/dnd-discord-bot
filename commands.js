@@ -2,12 +2,16 @@ const spell = require('./commands/spell')
 const spellsearch = require('./commands/spellsearch')
 const roll = require('./commands/roll')
 const help = require('./commands/help')
+const feat = require('./commands/feat')
+const feats = require('./commands/feats')
 
 const commands = {
   spell,
   spellsearch,
   roll,
-  help
+  help,
+  feat,
+  feats
 }
 const prefix = '§'
 
