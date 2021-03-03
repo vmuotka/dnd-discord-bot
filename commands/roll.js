@@ -1,16 +1,23 @@
 const { MessageEmbed } = require('discord.js')
 
+const shorthands = {
+  fireball: '8d6',
+  sleep: '5d8',
+
+}
+
 module.exports = async (msg, args) => {
   if (args.length > 0) {
     const [count, sides] = args[0].split('d')
 
     const advantage = args.includes('-a')
     const disadvantage = args.includes('-d')
-    console.log(advantage)
 
     let rolls = []
     for (let i = 0; i < count; i++)
       rolls.push(Math.floor(Math.random() * sides + 1))
+
+    rolls.sort()
 
     const regex = /[+||-](\d)+/
     let modifier = args.find(str => regex.exec(str))

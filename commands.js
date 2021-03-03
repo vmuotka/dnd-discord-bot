@@ -5,6 +5,7 @@ const help = require('./commands/help')
 const feat = require('./commands/feat')
 const feats = require('./commands/feats')
 const initiative = require('./commands/initiative')
+const wildshape = require('./commands/wildshape')
 
 const commands = {
   spell,
@@ -15,6 +16,8 @@ const commands = {
   feats,
   init: initiative,
   initiative,
+  ws: wildshape,
+  wildshape,
   prefix: (msg, args) => { prefix === args[0] },
 }
 let prefix = '§'

@@ -14,7 +14,6 @@ client.on('ready', () => {
     'Dungeons & Dragons',
   )
   console.log(`Logged in as ${client.user.tag}`)
-  // console.log(client)
 })
 
 client.on('message', messageHandler)

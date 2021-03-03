@@ -56,6 +56,7 @@ const updateInitiative = async (msg, args) => {
           initiative: args[0]
         }
       })
+    msg.react('✅')
   } catch (err) {
     console.error(err)
   }

@@ -11,7 +11,8 @@ module.exports = async (msg, args) => {
       { name: 'Roll', value: '`roll 2d6`, rolls dice and adds them together. \nGet more detailed instructions by typing `roll`.' },
       { name: 'Feat', value: '`feat <featname>`, returns the first feat matching given searchword.' },
       { name: 'Feats', value: '`feats`, returns a list of all feats in the database.' },
-      { name: 'Initiative', value: 'Can be used to update Ketunkolo\'s INITracker from Discord. Type `initiative` for more details.' }
+      { name: 'Initiative', value: 'Can be used to update Ketunkolo\'s INITracker from Discord. Type `initiative` for more details.' },
+      { name: 'Wildshape', value: 'Can be used to search beasts and look up statblocks for wildshape. Type `wildshape` for more details.' }
     )
   msg.channel.send(card)
 }

@@ -5,7 +5,7 @@ module.exports = async (msg, args) => {
   if (args.length > 0) {
     const spellname = args.join(' ')
     let query = {
-      name: { '$regex': spellname, '$options': 'i' }
+      name: { '$regex': '^' + spellname + '$', '$options': 'i' }
     }
     const data = await Spell.find(query)
 
@@ -24,13 +24,13 @@ module.exports = async (msg, args) => {
           {
             name: 'Components', value: `${spell.components.join(', ')} ${spell.material && materialstring}`
           },
-          { name: 'Duration', value: `${spell.duration} ${spell.concentration && '(c)'}` },
+          { name: 'Duration', value: `${spell.duration} ${spell.concentration ? '(c)' : ''}` },
           { name: 'classes', value: spell.class.join(', ') },
           { name: 'Description', value: spell.desc }
         )
       msg.channel.send(card)
     } else {
-      msg.channel.send('Spell not found')
+      msg.channel.send('Spell not found.')
     }
 
   } else {
